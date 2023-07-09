@@ -1,0 +1,29 @@
+import React, {useState} from 'react';
+import {Sidebar} from 'primereact/sidebar';
+import {Button} from 'primereact/button';
+import {Image} from 'primereact/image';
+import AppSideMenu from "./AppSideMenu";
+import AppUserSettings from "./AppUserSettings";
+
+export default function AppTopbar() {
+    const [visible, setVisible] = useState(false);
+
+    return (
+        <div>
+            <header className="top-bar">
+                <div className="flex gap-2 justify-content-center">
+                    <Sidebar visible={visible} onHide={() => setVisible(false)} >
+                        <h2>Banco Banquito</h2>
+                        <AppSideMenu />
+                    </Sidebar>
+                    <Button icon="pi pi-bars" onClick={() => setVisible(true)} size="small" />
+                    <div className="flex gap-2 justify-content-center">
+                        <Image className="logo-topbar" src="./logo.png" alt="Image" width="35"/>
+                        <h1 className="text-white logo-topbar">BanQuito</h1>
+                    </div>
+                </div>
+                <AppUserSettings />
+            </header>
+        </div>
+    );
+}
