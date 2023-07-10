@@ -4,7 +4,8 @@ import {Button} from 'primereact/button';
 import {Image} from 'primereact/image';
 import AppSideMenu from "./AppSideMenu";
 import AppUserSettings from "./AppUserSettings";
-
+import logo from '../../assets/logo.png';
+import {Outlet} from 'react-router-dom';
 export default function AppTopbar() {
     const [visible, setVisible] = useState(false);
 
@@ -24,6 +25,7 @@ export default function AppTopbar() {
                 </div>
                 <AppUserSettings />
             </header>
+            <Outlet/>
         </div>
     );
 }

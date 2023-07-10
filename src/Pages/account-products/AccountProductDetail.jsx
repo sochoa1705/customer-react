@@ -5,6 +5,7 @@ import {Divider} from 'primereact/divider';
 import AccountDetail from "./AccountDetail";
 import {Button} from 'primereact/button';
 import {useLocation, useNavigate} from "react-router-dom";
+import {Calendar} from 'primereact/calendar';
 export default function AccountProductsDetail() {
     const location = useLocation();
     const data = location.state;
@@ -65,6 +66,7 @@ export default function AccountProductsDetail() {
                 <DataView value={products} itemTemplate={itemTemplate} layout="grid"/>
             </div>
             <Divider/>
+
             <div className="card flex justify-content-center">
                 <div className="filterDate p-inputgroup p-float-label">
                     <span className="p-float-label p-inputtext-sm">
@@ -74,6 +76,7 @@ export default function AccountProductsDetail() {
                     </span>
                 </div>
             </div>
+
             <AccountDetail/>
 
             <div class="card">

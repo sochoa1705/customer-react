@@ -1,12 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {AccountProductService} from "../../service/AccountProductService";
-import {Button} from "primereact/button";
 import {Divider} from "primereact/divider";
 import {BreadCrumb} from "primereact/breadcrumb";
 import {DataView} from "primereact/dataview";
 import {InputNumber} from 'primereact/inputnumber';
-import AccountDetail from "../../components/AccountDetail";
-import DebtorForm from "../../components/pure/forms/debtorForm";
 import {FormikFormDebtor} from "../../components/pure/forms/debtorForm";
 
 export default function AccountTransfer() {
