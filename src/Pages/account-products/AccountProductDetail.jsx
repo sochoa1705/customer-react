@@ -11,7 +11,7 @@ export default function AccountProductsDetail() {
     const items = [
         {label: 'Mis Productos'},
         {label: 'Cuentas'},
-        {label: data.id},
+        {label: data.id, url: '/accounts'},
         {label: 'Últimos Movimientos'}];
     const home = {icon: 'pi pi-home'}
       const navigate = useNavigate();
@@ -69,7 +69,6 @@ export default function AccountProductsDetail() {
             <div class="card">
                 <div class="flex flex-wrap align-items-center justify-content-center card-container green-container">
                     <div class="w-12rem m-3 border-round">
-                        <Button label="Regresar" raised onClick={() => navigate(-1)}/>
                     </div>
                 </div>
             </div>

@@ -13,16 +13,16 @@
           "reference": "Pago de servicios",
           "type": "DÉBITO",
           "debtor": "Empresa de servicios",
-          "balance": "1000 - 10"
+          "balance": 990
         },
         {
           "id": "TRN1001",
           "date": "2021-01-02",
-          "amount": "5",
+          "amount": 5,
           "reference": "Pago",
           "type": "Transferencia",
           "debtor": "Juan Perez",
-          "balance": "1000 - 45"
+          "balance": 985
         }
       ]
     },
