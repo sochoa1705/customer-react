@@ -69,7 +69,7 @@ export default function LoginDemo() {
     
     <tr>
         <td>
-        <label htmlFor="email" className="block text-900 font-medium mb-2">Cedula</label>
+        <label htmlFor="email" className="text-900 font-medium mb-2">Cedula</label>
                         <InputText id="email" type="text" placeholder="Ingresa tu Cedula" className="w-full mb-3" />  
         </td>
      
@@ -85,8 +85,8 @@ export default function LoginDemo() {
         </td>
      
    <td>
-        <label htmlFor="email" className="block text-900 font-medium mb-1">Validacion Contraseña</label>
-                         <InputText id="email" type="text" placeholder="Ingrese Nueva mente su contraseña" className="w-full mb-3" />  
+        <label htmlFor="email" className="block text-900 font-medium mb-2">Validacion Contraseña</label>
+                         <InputText id="email" type="text" placeholder="Ingrese nuevamente" className="w-full mb-3" />  
      </td>
     
  
