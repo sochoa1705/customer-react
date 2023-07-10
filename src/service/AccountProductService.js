@@ -1,40 +1,7 @@
 export const AccountProductService = {
+    // Reemplazar por API
     getAccountProducts() {
-        {/*reemplazar por API REST que devuelva los productos de una cuenta del cliente*/}
-        return [
-            {
-                id: 'AHO1000',
-                code: '123456789',
-                availableBalance: 1000,
-                totalBalance: 1000,
-                accountTransactions: [
-                    {
-                        id: 'TRN1000',
-                        date: '2021-01-01',
-                        amount: 10,
-                        reference: 'Pago de servicios',
-                        type: 'DÉBITO',
-                        debtor: 'Empresa de servicios',
-                        balance: 1000 - 10,
-                    },
-                    {
-                        id: 'TRN1001',
-                        date: '2021-01-02',
-                        amount: 35,
-                        reference: 'Pago',
-                        type: 'Transferencia',
-                        debtor: 'Juan Perez',
-                        balance: 1000 - 45,
-                    }
-                ]
-            },
-            {
-                id: 'COR1001',
-                code: '234567890',
-                availableBalance: 2000,
-                totalBalance: 5000,
-            }
-        ];
+        return fetch('https://api.npoint.io/80a411e61e754db5969e').then(res => res.json()).then(data => data.data);
     },
 
     getAccountSaving() {

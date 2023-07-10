@@ -2,19 +2,27 @@ import React, {useState, useEffect} from 'react';
 import {BreadCrumb} from 'primereact/breadcrumb';
 import {DataView} from 'primereact/dataview';
 import {Divider} from 'primereact/divider';
+import AccountDetail from "./AccountDetail";
+import {Button} from 'primereact/button';
+import {useLocation, useNavigate} from "react-router-dom";
 import {Calendar} from 'primereact/calendar';
-import AccountDetail from "../../components/AccountDetail";
-import {AccountProductService} from "../../service/AccountProductService";
-
 export default function AccountProductsDetail() {
-    const items = [{label: 'Mis Productos'}, {label: 'Cuentas'}, {label: 'AHO1000'}, {label: 'Últimos Movimientos'}];
+    const location = useLocation();
+    const data = location.state;
+    const items = [
+        {label: 'Mis Productos'},
+        {label: 'Cuentas'},
+        {label: data.id},
+        {label: 'Últimos Movimientos'}];
     const home = {icon: 'pi pi-home'}
+      const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const [date, setDate] = useState(null);
 
     useEffect(() => {
-        AccountProductService.getProducts().then((data) => setProducts(data));
+        setProducts([data]);
     }, []);
+
 
     const gridItem = (product) => {
         return (
@@ -46,6 +54,7 @@ export default function AccountProductsDetail() {
         if (!product) {
             return;
         }
+
         if (layout === 'grid')
             return gridItem(product);
     };
@@ -57,6 +66,7 @@ export default function AccountProductsDetail() {
                 <DataView value={products} itemTemplate={itemTemplate} layout="grid"/>
             </div>
             <Divider/>
+
             <div className="card flex justify-content-center">
                 <div className="filterDate p-inputgroup p-float-label">
                     <span className="p-float-label p-inputtext-sm">
@@ -66,7 +76,16 @@ export default function AccountProductsDetail() {
                     </span>
                 </div>
             </div>
+
             <AccountDetail/>
+
+            <div class="card">
+                <div class="flex flex-wrap align-items-center justify-content-center card-container green-container">
+                    <div class="w-12rem m-3 border-round">
+                        <Button label="Regresar" raised onClick={() => navigate(-1)}/>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
