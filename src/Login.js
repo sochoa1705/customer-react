@@ -61,8 +61,8 @@ export default function LoginDemo() {
                     </div>
 
                     <div>
-                        <label htmlFor="email" className="block text-900 font-medium mb-2">Usuario</label>
-                        <InputText id="email" type="text" placeholder="Ingresa tu Usuario" className="w-full mb-3" />
+                        <label htmlFor="user" className="block text-900 font-medium mb-2">Usuario</label>
+                        <InputText id="user" type="text" placeholder="Ingresa tu Usuario" className="w-full mb-3" />
 
                         <label htmlFor="password" className="block text-900 font-medium mb-2">Contraseña</label>
                         <InputText type="password" placeholder="Ingresa tu Contraseña" className="w-full mb-3" />

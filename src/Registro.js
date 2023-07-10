@@ -74,19 +74,19 @@ export default function LoginDemo() {
         </td>
      
    <td>
-        <label htmlFor="email" className=" text-900 font-medium mb-1">Usuario</label>
-                         <InputText id="email" type="text" placeholder="Ingresa un Usuario" className="w-full mb-3" />  
+        <label htmlFor="user" className=" text-900 font-medium mb-1">Usuario</label>
+                         <InputText id="user" type="text" placeholder="Ingresa un Usuario" className="w-full mb-3" />  
      </td>
     </tr>
     <tr>
     <td>
-        <label htmlFor="email" className="block text-900 font-medium mb-2">Contraseña</label>
-                        <InputText id="email" type="text" placeholder="Contraseña" className="w-full mb-3" />  
+        <label htmlFor="password" className="block text-900 font-medium mb-2">Contraseña</label>
+                        <InputText id="password" type="password" placeholder="Contraseña" className="w-full mb-3" />  
         </td>
      
    <td>
-        <label htmlFor="email" className="block text-900 font-medium mb-2">Validacion Contraseña</label>
-                         <InputText id="email" type="text" placeholder="Ingrese nuevamente" className="w-full mb-3" />  
+        <label htmlFor="passwordcon" className="block text-900 font-medium mb-2">Validacion Contraseña</label>
+                         <InputText id="passwordcon" type="password" placeholder="Ingrese nuevamente" className="w-full mb-3" />  
      </td>
     
  
