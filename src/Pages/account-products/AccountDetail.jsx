@@ -1,13 +1,19 @@
-import React, { useState, useEffect} from 'react';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import { AccountProductService } from "../service/AccountProductService";
+import React, {useState, useEffect} from 'react';
+import {DataTable} from 'primereact/datatable';
+import {Column} from 'primereact/column';
+import {AccountProductService} from "../../service/AccountProductService";
+import async from "async";
+import {useLocation} from "react-router-dom";
 
 export default function AccountDetail() {
     const [transactions, setTransactions] = useState([]);
+  /* 2. Get the param */
+  const location = useLocation();
+  const data = location.state;
+
 
     useEffect(() => {
-        AccountProductService.getTransactions().then((data) => setTransactions(data));
+        setTransactions(data.accountTransactions);
     }, []);
 
     return (
