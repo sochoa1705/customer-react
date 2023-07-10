@@ -25,9 +25,21 @@ export default function LoginDemo() {
                 <div className="w-full md:w-4 flex align-items-center justify-content-center py-4">
 
 
-                    <Image src="./banc.jpg" alt="Image" width="650" />
+
+
+                    <table class="default">
+                        <tr>
+                            <td>  <Image src="./banc.jpg" alt="Image" width="650" /></td>
+                        </tr>
+                        <tr>
+                            <p>Cultivando tus sueños, construyendo tu futuro</p>
+                        </tr>
+                    </table>
+
 
                 </div>
+
+
 
                 <div className="w-full md:w-3">
 
