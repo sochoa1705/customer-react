@@ -24,14 +24,6 @@ export default function AppSideMenu() {
                 {
                     label:'Transferencias',
                     icon:'pi pi-fw pi-upload'
-                },
-                {
-                    label:'Depósitos',
-                    icon:'pi pi-fw pi-download'
-                },
-                {
-                    label:'Retiros',
-                    icon:'pi pi-fw pi-inbox'
                 }
             ]
         }

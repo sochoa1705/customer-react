@@ -37,8 +37,20 @@ export const AccountProductService = {
         ];
     },
 
+    getAccountSaving() {
+        return [
+            {
+                id: 'AHO1000',
+                code: '123456789',
+                availableBalance: 1000,
+                totalBalance: 1000,
+            }
+        ];
+
+    },
+
     getProductSaving() {
-        return Promise.resolve(this.getAccountProducts()[0]);
+        return Promise.resolve(this.getAccountSaving());
     },
     getAccountProductChecking() {
         return Promise.resolve(this.getAccountProducts()[1]);
