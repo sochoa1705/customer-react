@@ -2,13 +2,15 @@ import React, {useState, useEffect} from 'react';
 import {BreadCrumb} from 'primereact/breadcrumb';
 import {DataView} from 'primereact/dataview';
 import {Divider} from 'primereact/divider';
-import {AccountProductService} from "../../service/AccountProductService";
+import {Calendar} from 'primereact/calendar';
 import AccountDetail from "../../components/AccountDetail";
+import {AccountProductService} from "../../service/AccountProductService";
 
 export default function AccountProductsDetail() {
     const items = [{label: 'Mis Productos'}, {label: 'Cuentas'}, {label: 'AHO1000'}, {label: 'Últimos Movimientos'}];
     const home = {icon: 'pi pi-home'}
     const [products, setProducts] = useState([]);
+    const [date, setDate] = useState(null);
 
     useEffect(() => {
         AccountProductService.getProducts().then((data) => setProducts(data));
@@ -56,8 +58,16 @@ export default function AccountProductsDetail() {
                 <DataView value={products} itemTemplate={itemTemplate} layout="grid"/>
             </div>
             <Divider/>
+            <div className="card flex justify-content-center">
+                <div className="filterDate p-inputgroup p-float-label">
+                    <span className="p-float-label p-inputtext-sm">
+                        <Calendar inputId="filter_date" value={date} onChange={(e) => setDate(e.value)}/>
+                        <label htmlFor="filter_date">Buscar por fecha</label>
+                        <i className="pi pi-calendar p-inputgroup-addon"/>
+                    </span>
+                </div>
+            </div>
             <AccountDetail/>
         </div>
     )
-
 }
