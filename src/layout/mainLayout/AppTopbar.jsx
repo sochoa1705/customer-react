@@ -18,7 +18,7 @@ export default function AppTopbar() {
                     </Sidebar>
                     <Button icon="pi pi-bars" onClick={() => setVisible(true)} size="small" />
                     <div className="flex gap-2 justify-content-center">
-                        <Image className="logo-topbar" src="./logo.png" alt="Image" width="35"/>
+                        <Image className="logo-topbar" src={logo} alt="Image" width="35"/>
                         <h1 className="text-white logo-topbar">BanQuito</h1>
                     </div>
                 </div>

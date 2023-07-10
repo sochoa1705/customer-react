@@ -9,7 +9,8 @@ export default function AppSideMenu() {
             items:[
                 {
                     label:'Cuentas',
-                    icon:'pi pi-fw pi-file'
+                    icon:'pi pi-fw pi-file',
+                    command:()=>{window.location ="/accounts"}
                 },
                 {
                     label:'Préstamos',

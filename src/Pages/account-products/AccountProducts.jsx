@@ -4,28 +4,40 @@ import {DataView, DataViewLayoutOptions} from 'primereact/dataview';
 import {Button} from 'primereact/button';
 import {Divider} from 'primereact/divider';
 import {AccountProductService} from "../../service/AccountProductService";
+import {useNavigate} from "react-router-dom";
 
 export default function AccountProducts() {
     const items = [{label: 'Mis Productos'}, {label: 'Cuentas'}];
     const home = {icon: 'pi pi-home'}
     const [products, setProducts] = useState([]);
     const [layout, setLayout] = useState('grid');
+    const [data, setData] = useState({data: []});
+      const navigate = useNavigate();
+    const [visible, setVisible] = useState(false)
+
 
     useEffect(() => {
-        AccountProductService.getProducts().then((data) => setProducts(data));
+        AccountProductService.getAccountProducts().then((data) => {
+            setProducts(data);
+        });
     }, []);
 
     const listItem = (product) => {
         return (
             <div className="col-12">
                 <div className="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
-                    <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
+                    <div
+                        className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
                         <div className="flex flex-column align-items-center sm:align-items-start gap-3">
                             <div className="text-2xl font-bold text-900">{product.id}</div>
                             <div className="text-2xl font-bold text-900">{product.code}</div>
                             <div className="flex align-items-center gap-3">
                                 <span className="flex align-items-center gap-2">
-                                    <Button label="Detalle" icon="pi pi-money-bill" size="small" rounded></Button>
+                                    <Button label="Detalle" id={product.id} icon="pi pi-money-bill" size="small" rounded
+                                            onClick={() =>
+                                                navigate('detail', { state: product })
+                                            }>
+                                    </Button>
                                 </span>
                             </div>
                         </div>
@@ -62,7 +74,11 @@ export default function AccountProducts() {
                     </div>
                     <div className="flex flex-column align-items-center gap-2 py-5">
                         <div className="text-2xl font-bold">
-                            <Button label="Detalle" severity="info" rounded></Button>
+                            <Button label="Detalle" id={product.id} icon="pi pi-money-bill" size="small" rounded
+                                    onClick={() =>
+                                        navigate('detail', { state: product })
+                                    }>
+                            </Button>
                         </div>
                     </div>
                 </div>
