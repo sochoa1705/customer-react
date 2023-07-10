@@ -1,24 +1,28 @@
 import React, {useState, useEffect} from 'react';
-import {BreadCrumb} from 'primereact/breadcrumb';
-import {DataView} from 'primereact/dataview';
-import {Divider} from 'primereact/divider';
-import {Calendar} from 'primereact/calendar';
-import AccountDetail from "../../components/AccountDetail";
 import {AccountProductService} from "../../service/AccountProductService";
+import {Button} from "primereact/button";
+import {Divider} from "primereact/divider";
+import {BreadCrumb} from "primereact/breadcrumb";
+import {DataView} from "primereact/dataview";
+import {InputNumber} from 'primereact/inputnumber';
+import AccountDetail from "../../components/AccountDetail";
+import DebtorForm from "../../components/pure/forms/debtorForm";
+import {FormikFormDebtor} from "../../components/pure/forms/debtorForm";
 
-export default function AccountProductsDetail() {
-    const items = [{label: 'Mis Productos'}, {label: 'Cuentas'}, {label: 'AHO1000'}, {label: 'Últimos Movimientos'}];
+export default function AccountTransfer() {
+    const items = [{label: 'Transacciones'}, {label: 'Transferencia'}];
     const home = {icon: 'pi pi-home'}
-    const [products, setProducts] = useState([]);
-    const [date, setDate] = useState(null);
+
+    const [product, setProduct] = useState(null);
+    const [value, setValue] = useState(null);
 
     useEffect(() => {
-        AccountProductService.getProducts().then((data) => setProducts(data));
+        AccountProductService.getProductSaving().then((data) => setProduct(data));
     }, []);
 
     const gridItem = (product) => {
         return (
-            <div className="col-12 sm:col-12 lg:col-12 xl:col-4 p-4">
+            <div className="col-12 sm:col-12 lg:col-12 xl:col-4 p-4 cardStyle">
                 <div className="p-4 border-1 surface-border surface-card border-round">
                     <div className="flex flex-wrap align-items-center justify-content-between gap-2">
                         <div className="flex align-items-center gap-2">
@@ -33,10 +37,6 @@ export default function AccountProductsDetail() {
                         <div className="flex align-items-center">Saldo disponible</div>
                         <div className="text-2xl font-bold">${product.availableBalance}</div>
                     </div>
-                    <div className="flex align-items-center justify-content-between">
-                        <div className="flex align-items-center">Saldo contable</div>
-                        <div className="text-2xl font-bold">${product.totalBalance}</div>
-                    </div>
                 </div>
             </div>
         );
@@ -49,24 +49,24 @@ export default function AccountProductsDetail() {
         if (layout === 'grid')
             return gridItem(product);
     };
-
     return (
         <div>
             <BreadCrumb model={items} home={home}/>
             <div className="card">
-                <DataView value={products} itemTemplate={itemTemplate} layout="grid"/>
-            </div>
-            <Divider/>
-            <div className="card flex justify-content-center">
-                <div className="filterDate p-inputgroup p-float-label">
-                    <span className="p-float-label p-inputtext-sm">
-                        <Calendar inputId="filter_date" value={date} onChange={(e) => setDate(e.value)}/>
-                        <label htmlFor="filter_date">Buscar por fecha</label>
-                        <i className="pi pi-calendar p-inputgroup-addon"/>
+                <div className="card flex justify-content-center p-4">
+                    <span className="p-float-label">
+                        <InputNumber id="number-input" value={value} onValueChange={(e) => setValue(e.value)}  mode="currency" currency="USD" locale="en-US" />
+                        <label htmlFor="number-input">Ingrese el monto</label>
                     </span>
                 </div>
             </div>
-            <AccountDetail/>
+            <div className="card">
+                <DataView value={product} itemTemplate={itemTemplate} layout="grid"/>
+            </div>
+            <Divider align="center">
+                <span className="p-tag">Ingrese beneficiario</span>
+            </Divider>
+            <FormikFormDebtor/>
         </div>
-    )
+    );
 }
