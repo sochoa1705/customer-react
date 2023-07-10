@@ -32,7 +32,7 @@ export default function LoginDemo() {
                             <td>  <Image src="./banc.jpg" alt="Image" width="650" /></td>
                         </tr>
                         <tr>
-                            <p>Cultivando tus sueños, construyendo tu futuro</p>
+                         
                         </tr>
                     </table>
 
