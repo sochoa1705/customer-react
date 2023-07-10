@@ -10,10 +10,18 @@ export default function AccountProducts() {
     const home = {icon: 'pi pi-home'}
     const [products, setProducts] = useState([]);
     const [layout, setLayout] = useState('grid');
+    const [data, setData] = useState({data: []});
 
     useEffect(() => {
-        AccountProductService.getProducts().then((data) => setProducts(data));
+        AccountProductService.getAccountProducts().then((data) => setProducts(data));
     }, []);
+
+    const handleClick = async () => {
+        try {
+
+        } catch (err) {
+            console.log(err.message);
+    }};
 
     const listItem = (product) => {
         return (
@@ -25,7 +33,10 @@ export default function AccountProducts() {
                             <div className="text-2xl font-bold text-900">{product.code}</div>
                             <div className="flex align-items-center gap-3">
                                 <span className="flex align-items-center gap-2">
-                                    <Button label="Detalle" icon="pi pi-money-bill" size="small" rounded></Button>
+                                    <Button label="Detalle" icon="pi pi-money-bill" size="small" rounded onClick={handleClick}>
+
+
+                                    </Button>
                                 </span>
                             </div>
                         </div>
@@ -62,7 +73,7 @@ export default function AccountProducts() {
                     </div>
                     <div className="flex flex-column align-items-center gap-2 py-5">
                         <div className="text-2xl font-bold">
-                            <Button label="Detalle" severity="info" rounded></Button>
+                            <Button label="Detalle" severity="info" rounded onClick={handleClick}></Button>
                         </div>
                     </div>
                 </div>

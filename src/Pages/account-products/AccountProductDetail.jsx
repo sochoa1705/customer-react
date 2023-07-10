@@ -8,11 +8,13 @@ import AccountDetail from "../../components/AccountDetail";
 export default function AccountProductsDetail() {
     const items = [{label: 'Mis Productos'}, {label: 'Cuentas'}, {label: 'AHO1000'}, {label: 'Últimos Movimientos'}];
     const home = {icon: 'pi pi-home'}
+
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        AccountProductService.getProducts().then((data) => setProducts(data));
+        AccountProductService.getAccountProducts().then((data) => setProducts(data));
     }, []);
+
 
     const gridItem = (product) => {
         return (
