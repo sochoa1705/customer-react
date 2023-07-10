@@ -4,10 +4,12 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { classNames } from 'primereact/utils';
 import { Dialog } from 'primereact/dialog';
+import {useNavigate} from "react-router-dom";
 
 export const FormikFormDebtor = (monto) => {
     const [showMessage, setShowMessage] = useState(false);
     const [formData, setFormData] = useState({});
+    const navigate = useNavigate();
 
     const formik = useFormik({
         initialValues: {
@@ -27,11 +29,11 @@ export const FormikFormDebtor = (monto) => {
                 errors.email = 'Email es requerido.';
             }
             else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.email)) {
-                errors.email = 'Invalid email address. E.g. example@email.com';
+                errors.email = 'Email inválido E.g. example@email.com';
             }
 
             if (!data.id) {
-                errors.account = 'Cédula es requerido.';
+                errors.id = 'Cédula es requerido.';
             }
 
             if (!data.account) {
@@ -43,8 +45,6 @@ export const FormikFormDebtor = (monto) => {
 
             setShowMessage(true);
             setFormData(data);
-            console.log(monto);
-            console.log(formData);
             formik.resetForm();
         }
     });
@@ -103,7 +103,11 @@ export const FormikFormDebtor = (monto) => {
 
 
 
-                        <Button type="submit" label="Confirmar" className="mt-2" />
+                        <Button type="submit" label="Confirmar" className="mt-2"
+                            onClick={() => {
+                                navigate('',{state: monto});
+                            }}
+                        />
                     </form>
                 </div>
             </div>

@@ -8,6 +8,7 @@ import LoginLayout from "./layout/loginLayout";
 import AccountTransfer from "./Pages/account-transactions/accountTransfer";
 import {ContextProvider} from "./hooks/useStateContext";
 import React from "react";
+import RegisterDemo from "./components/pure/forms/Registro";
 
 
 const router = createBrowserRouter([
@@ -34,10 +35,13 @@ const router = createBrowserRouter([
         path: '/',
         element: <LoginLayout/>,
         children: [
-
             {
                 path: '',
                 element: <LoginDemo/>
+            },
+            {
+                path: '/register',
+                element: <RegisterDemo/>
             }
         ]
     }

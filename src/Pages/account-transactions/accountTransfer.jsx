@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {AccountProductService} from "../../service/AccountProductService";
 import {Divider} from "primereact/divider";
 import {BreadCrumb} from "primereact/breadcrumb";
@@ -7,16 +7,26 @@ import {InputNumber} from 'primereact/inputnumber';
 import {FormikFormDebtor} from "../../components/pure/forms/debtorForm";
 import {Form} from "formik";
 
+import {useLocation,useNavigate} from "react-router-dom";
+
 export default function AccountTransfer() {
     const items = [{label: 'Transacciones'}, {label: 'Transferencia'}];
     const home = {icon: 'pi pi-home'}
 
     const [product, setProduct] = useState(null);
     const [value, setValue] = useState(null);
+    const [Saldo, setSaldo] = useState(null);
 
     useEffect(() => {
-        AccountProductService.getProductSaving().then((data) => setProduct(data));
+        AccountProductService.getProductSaving().then(
+            (data) => setProduct(data),
+        )
     }, []);
+
+
+
+
+
 
     const gridItem = (product) => {
         return (

@@ -41,10 +41,6 @@ export default function AccountProductsDetail() {
                         <div className="flex align-items-center">Saldo disponible</div>
                         <div className="text-2xl font-bold">${product.availableBalance}</div>
                     </div>
-                    <div className="flex align-items-center justify-content-between">
-                        <div className="flex align-items-center">Saldo contable</div>
-                        <div className="text-2xl font-bold">${product.totalBalance}</div>
-                    </div>
                 </div>
             </div>
         );

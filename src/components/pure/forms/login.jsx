@@ -20,7 +20,7 @@ export default function LoginDemo() {
     return (<div className="card flex justify-content-center contex">
         <div className="flex flex-column md:flex-row md:w-50rem">
             <div className="w-full md:w-4 flex align-items-center justify-content-center py-4">
-                <table class="default">
+                <table className="default">
                     <tr>
                         <td><Image src="./banc.jpg" alt="Image" width="650"/></td>
                     </tr>
@@ -38,7 +38,7 @@ export default function LoginDemo() {
                     <img src="./banc.jpg" alt="hyper" height={50} className="mb-3"/>
                     <div className="text-900 text-3xl font-medium mb-3">Bienvenido</div>
                     <span className="text-600 font-medium line-height-3">No tienes una cuenta?</span>
-                    <a className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Solicitala!</a>
+                    <a href={"register"} className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Solicitala!</a>
                 </div>
 
                 <div>
@@ -99,4 +99,3 @@ export default function LoginDemo() {
     </div>)
 }
 
-ReactDOM.render(<LoginDemo/>, document.getElementById('root'));
