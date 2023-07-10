@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { Divider } from 'primereact/divider';
 import { classNames } from 'primereact/utils';
 import { Dialog } from 'primereact/dialog';
 
-export const FormikFormDebtor = () => {
+export const FormikFormDebtor = (monto) => {
     const [showMessage, setShowMessage] = useState(false);
     const [formData, setFormData] = useState({});
 
@@ -41,8 +40,11 @@ export const FormikFormDebtor = () => {
             return errors;
         },
         onSubmit: (data) => {
-            setFormData(data);
+
             setShowMessage(true);
+            setFormData(data);
+            console.log(monto);
+            console.log(formData);
             formik.resetForm();
         }
     });
@@ -97,6 +99,9 @@ export const FormikFormDebtor = () => {
                             </span>
                             {getFormErrorMessage('account')}
                         </div>
+                              <input type="hidden" value={monto} name="hiddenField" />
+
+
 
                         <Button type="submit" label="Confirmar" className="mt-2" />
                     </form>

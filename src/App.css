@@ -104,3 +104,14 @@ border-radius: 20px;
   border-radius: 4px;
   box-sizing: border-box;
 }
+.filterDate{
+  width: 45%;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.contenedor {
+  justify-content: center;
+  align-items: center;
+  margin-left: 100px;
+}

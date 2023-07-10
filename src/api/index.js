@@ -1,14 +1,14 @@
 import axios from 'axios'
 
-export const BASE_URL = 'https://api.npoint.io/';
+export const BASE_URL = 'https://my.api.mockaroo.com/';
 
 export const ENDPOINTS = {
-    accounts : '80a411e61e754db5969e',
+    accounts : 'users_banquito.json',
 }
 
 export const createAPIEndpoint = endpoint => {
 
-    let url = BASE_URL + endpoint + '/';
+    let url = BASE_URL + endpoint ;
     return {
         fetch: (token) => axios.get(url, token),
         post: (newRecord, token) => axios.post(url, newRecord, token),

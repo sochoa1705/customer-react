@@ -5,6 +5,7 @@ import {BreadCrumb} from "primereact/breadcrumb";
 import {DataView} from "primereact/dataview";
 import {InputNumber} from 'primereact/inputnumber';
 import {FormikFormDebtor} from "../../components/pure/forms/debtorForm";
+import {Form} from "formik";
 
 export default function AccountTransfer() {
     const items = [{label: 'Transacciones'}, {label: 'Transferencia'}];
@@ -19,7 +20,8 @@ export default function AccountTransfer() {
 
     const gridItem = (product) => {
         return (
-            <div className="col-12 sm:col-12 lg:col-12 xl:col-4 p-4 cardStyle">
+
+            <div className="col-12 md:col-5 lg:col-6 xl:col-3">
                 <div className="p-4 border-1 surface-border surface-card border-round">
                     <div className="flex flex-wrap align-items-center justify-content-between gap-2">
                         <div className="flex align-items-center gap-2">
@@ -39,6 +41,8 @@ export default function AccountTransfer() {
         );
     };
 
+
+
     const itemTemplate = (product, layout) => {
         if (!product) {
             return;
@@ -57,13 +61,15 @@ export default function AccountTransfer() {
                     </span>
                 </div>
             </div>
-            <div className="card">
-                <DataView value={product} itemTemplate={itemTemplate} layout="grid"/>
+            <div className="contenedor">
+                    <DataView value={product} itemTemplate={itemTemplate} layout="grid"/>
             </div>
             <Divider align="center">
                 <span className="p-tag">Ingrese beneficiario</span>
             </Divider>
-            <FormikFormDebtor/>
+            <FormikFormDebtor monto={value}
+
+            />
         </div>
     );
 }
