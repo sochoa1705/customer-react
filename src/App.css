@@ -7,6 +7,19 @@
   pointer-events: none;
 }
 
+.top-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #000000;
+}
+.logo-topbar{
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
