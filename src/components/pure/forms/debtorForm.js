@@ -71,7 +71,7 @@ export const FormikFormDebtor = (monto) => {
                         <div className="field">
                             <span className="p-float-label">
                                 <InputText id="name" name="name" value={formik.values.name} onChange={formik.handleChange} autoFocus className={classNames({ 'p-invalid': isFormFieldValid('name') })} />
-                                <label htmlFor="name" className={classNames({ 'p-error': isFormFieldValid('name') })}>Name*</label>
+                                <label htmlFor="name" className={classNames({ 'p-error': isFormFieldValid('name') })}>Nombre Beneficiario*</label>
                             </span>
                             {getFormErrorMessage('name')}
                         </div>
@@ -79,7 +79,7 @@ export const FormikFormDebtor = (monto) => {
                             <span className="p-float-label p-input-icon-right">
                                 <i className="pi pi-envelope" />
                                 <InputText id="email" name="email" value={formik.values.email} onChange={formik.handleChange} className={classNames({ 'p-invalid': isFormFieldValid('email') })} />
-                                <label htmlFor="email" className={classNames({ 'p-error': isFormFieldValid('email') })}>Email*</label>
+                                <label htmlFor="email" className={classNames({ 'p-error': isFormFieldValid('email') })}>Correo electrónico*</label>
                             </span>
                             {getFormErrorMessage('email')}
                         </div>
@@ -87,7 +87,7 @@ export const FormikFormDebtor = (monto) => {
                             <span className="p-float-label p-input-icon-right">
                                 <i className="pi pi-id-card" />
                                 <InputText id="id" name="id" value={formik.values.id} onChange={formik.handleChange} className={classNames({ 'p-invalid': isFormFieldValid('id') })} />
-                                <label htmlFor="id" className={classNames({ 'p-error': isFormFieldValid('id') })}>Cedula*</label>
+                                <label htmlFor="id" className={classNames({ 'p-error': isFormFieldValid('id') })}>Cédula*</label>
                             </span>
                             {getFormErrorMessage('id')}
                         </div>

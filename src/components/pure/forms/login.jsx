@@ -2,13 +2,10 @@ import React, {useEffect, useState} from "react";
 import {Divider} from 'primereact/divider';
 import {Button} from 'primereact/button';
 import {Image} from 'primereact/image';
-
-import ReactDOM from 'react-dom';
 import {Formik, Field, Form} from 'formik';
-import useStateContext from "../../../hooks/useStateContext";
 import {createAPIEndpoint, ENDPOINTS} from "../../../api";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import banc from "./../../../assets/banc.jpg";
 
 export default function LoginDemo() {
     const [value, setValue] = useState('');
@@ -22,7 +19,7 @@ export default function LoginDemo() {
             <div className="w-full md:w-4 flex align-items-center justify-content-center py-4">
                 <table className="default">
                     <tr>
-                        <td><Image src="./banc.jpg" alt="Image" width="650"/></td>
+                        <td><Image src={banc} alt="Image" width="650"/></td>
                     </tr>
                     <tr>
                     </tr>
@@ -35,7 +32,7 @@ export default function LoginDemo() {
             </div>
             <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
                 <div className="text-center mb-5">
-                    <img src="./banc.jpg" alt="hyper" height={50} className="mb-3"/>
+                    <img src={banc} alt="hyper" height={50} className="mb-3"/>
                     <div className="text-900 text-3xl font-medium mb-3">Bienvenido</div>
                     <span className="text-600 font-medium line-height-3">No tienes una cuenta?</span>
                     <a href={"register"} className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Solicitala!</a>
