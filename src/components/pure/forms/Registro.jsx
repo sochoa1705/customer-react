@@ -1,23 +1,13 @@
 import React, { useState } from "react";
 import { Divider } from 'primereact/divider';
-import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Image } from 'primereact/image';
-
-import ReactDOM from 'react-dom';
 import { Formik, Field, Form } from 'formik';
+import banc from "./../../../assets/banc.jpg";
 
-
-
-
-export default function LoginDemo() {
+export default function RegisterDemo() {
     const [value, setValue] = useState('');
-
-
     return (
-
-
-
         <div className="card flex justify-content-center contex">
             <Formik
                 initialValues={{
@@ -45,7 +35,7 @@ export default function LoginDemo() {
 
                         <table class="default">
                             <tr>
-                                <td>  <Image src="./banc.jpg" alt="Image" width="650" /></td>
+                                <td>  <Image src={banc} alt="Image" width="650" /></td>
                             </tr>
                             <tr>
                                 <p  className="align-items-center justify-content-center py-4">Cultivando tus sueños, construyendo tu futuro</p>
@@ -70,10 +60,12 @@ export default function LoginDemo() {
                     <Form>
                         <div className="surface-card p-4 shadow-2 border-round w-full lg:w-11">
                             <div className="text-center mb-5">
-                                <img src="./banc.jpg" alt="hyper" height={50} className="mb-3" />
+                                <img src={banc} alt="hyper" height={50} className="mb-3" />
+
+
                                 <div className="text-900 text-3xl font-medium mb-3">Registro</div>
                                 <span className="text-600 font-medium line-height-3">Tienes una cuenta?</span>
-                                <a className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Ingreso</a>
+                                <a href={"/"} className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Ingreso</a>
                             </div>
 
                             <div>
@@ -135,5 +127,3 @@ export default function LoginDemo() {
     )
 }
 
-
-ReactDOM.render(<LoginDemo />, document.getElementById('root'));

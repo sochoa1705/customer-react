@@ -7,6 +7,7 @@ import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import './index.css';
 import App from './App';
+import {ContextProvider} from "./hooks/useStateContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

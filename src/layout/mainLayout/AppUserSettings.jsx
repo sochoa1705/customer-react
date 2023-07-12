@@ -15,7 +15,8 @@ export default function AppUserSettings() {
         },
         {
             label: 'Cerrar Sesión',
-            icon: 'pi pi-fw pi-power-off'
+            icon: 'pi pi-fw pi-power-off',
+            command: () => { window.location = "/"; }
         }
     ];
 

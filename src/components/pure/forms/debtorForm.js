@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { Divider } from 'primereact/divider';
 import { classNames } from 'primereact/utils';
 import { Dialog } from 'primereact/dialog';
+import {useNavigate} from "react-router-dom";
 
-export const FormikFormDebtor = () => {
+export const FormikFormDebtor = (monto) => {
     const [showMessage, setShowMessage] = useState(false);
     const [formData, setFormData] = useState({});
+    const navigate = useNavigate();
 
     const formik = useFormik({
         initialValues: {
@@ -28,11 +29,11 @@ export const FormikFormDebtor = () => {
                 errors.email = 'Email es requerido.';
             }
             else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.email)) {
-                errors.email = 'Invalid email address. E.g. example@email.com';
+                errors.email = 'Email inválido E.g. example@email.com';
             }
 
             if (!data.id) {
-                errors.account = 'Cédula es requerido.';
+                errors.id = 'Cédula es requerido.';
             }
 
             if (!data.account) {
@@ -41,8 +42,9 @@ export const FormikFormDebtor = () => {
             return errors;
         },
         onSubmit: (data) => {
-            setFormData(data);
+
             setShowMessage(true);
+            setFormData(data);
             formik.resetForm();
         }
     });
@@ -69,7 +71,7 @@ export const FormikFormDebtor = () => {
                         <div className="field">
                             <span className="p-float-label">
                                 <InputText id="name" name="name" value={formik.values.name} onChange={formik.handleChange} autoFocus className={classNames({ 'p-invalid': isFormFieldValid('name') })} />
-                                <label htmlFor="name" className={classNames({ 'p-error': isFormFieldValid('name') })}>Name*</label>
+                                <label htmlFor="name" className={classNames({ 'p-error': isFormFieldValid('name') })}>Nombre Beneficiario*</label>
                             </span>
                             {getFormErrorMessage('name')}
                         </div>
@@ -77,7 +79,7 @@ export const FormikFormDebtor = () => {
                             <span className="p-float-label p-input-icon-right">
                                 <i className="pi pi-envelope" />
                                 <InputText id="email" name="email" value={formik.values.email} onChange={formik.handleChange} className={classNames({ 'p-invalid': isFormFieldValid('email') })} />
-                                <label htmlFor="email" className={classNames({ 'p-error': isFormFieldValid('email') })}>Email*</label>
+                                <label htmlFor="email" className={classNames({ 'p-error': isFormFieldValid('email') })}>Correo electrónico*</label>
                             </span>
                             {getFormErrorMessage('email')}
                         </div>
@@ -85,7 +87,7 @@ export const FormikFormDebtor = () => {
                             <span className="p-float-label p-input-icon-right">
                                 <i className="pi pi-id-card" />
                                 <InputText id="id" name="id" value={formik.values.id} onChange={formik.handleChange} className={classNames({ 'p-invalid': isFormFieldValid('id') })} />
-                                <label htmlFor="id" className={classNames({ 'p-error': isFormFieldValid('id') })}>Cedula*</label>
+                                <label htmlFor="id" className={classNames({ 'p-error': isFormFieldValid('id') })}>Cédula*</label>
                             </span>
                             {getFormErrorMessage('id')}
                         </div>
@@ -97,8 +99,15 @@ export const FormikFormDebtor = () => {
                             </span>
                             {getFormErrorMessage('account')}
                         </div>
+                              <input type="hidden" value={monto} name="hiddenField" />
 
-                        <Button type="submit" label="Confirmar" className="mt-2" />
+
+
+                        <Button type="submit" label="Confirmar" className="mt-2"
+                            onClick={() => {
+                                navigate('',{state: monto});
+                            }}
+                        />
                     </form>
                 </div>
             </div>

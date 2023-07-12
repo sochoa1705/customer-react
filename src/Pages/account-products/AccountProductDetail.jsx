@@ -12,7 +12,7 @@ export default function AccountProductsDetail() {
     const items = [
         {label: 'Mis Productos'},
         {label: 'Cuentas'},
-        {label: data.id},
+        {label: data.id , url: '/accounts/'},
         {label: 'Últimos Movimientos'}];
     const home = {icon: 'pi pi-home'}
       const navigate = useNavigate();
@@ -40,10 +40,6 @@ export default function AccountProductsDetail() {
                     <div className="flex align-items-center justify-content-between">
                         <div className="flex align-items-center">Saldo disponible</div>
                         <div className="text-2xl font-bold">${product.availableBalance}</div>
-                    </div>
-                    <div className="flex align-items-center justify-content-between">
-                        <div className="flex align-items-center">Saldo contable</div>
-                        <div className="text-2xl font-bold">${product.totalBalance}</div>
                     </div>
                 </div>
             </div>
@@ -79,13 +75,6 @@ export default function AccountProductsDetail() {
 
             <AccountDetail/>
 
-            <div class="card">
-                <div class="flex flex-wrap align-items-center justify-content-center card-container green-container">
-                    <div class="w-12rem m-3 border-round">
-                        <Button label="Regresar" raised onClick={() => navigate(-1)}/>
-                    </div>
-                </div>
-            </div>
         </div>
     )
 }
