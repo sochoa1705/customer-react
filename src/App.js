@@ -8,8 +8,7 @@ import LoginLayout from "./layout/loginLayout";
 import AccountTransfer from "./Pages/account-transactions/accountTransfer";
 import {ContextProvider} from "./hooks/useStateContext";
 import React from "react";
-import RegisterDemo from "./components/pure/forms/Registro";
-
+import Registro from "./components/pure/forms/registro";
 
 const router = createBrowserRouter([
     {
@@ -41,7 +40,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/register',
-                element: <RegisterDemo/>
+                element: <Registro/>
             }
         ]
     }

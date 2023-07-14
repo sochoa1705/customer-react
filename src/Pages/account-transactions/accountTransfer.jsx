@@ -1,13 +1,10 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useEffect, useState} from 'react';
 import {AccountProductService} from "../../service/AccountProductService";
 import {Divider} from "primereact/divider";
 import {BreadCrumb} from "primereact/breadcrumb";
 import {DataView} from "primereact/dataview";
 import {InputNumber} from 'primereact/inputnumber';
 import {FormikFormDebtor} from "../../components/pure/forms/debtorForm";
-import {Form} from "formik";
-
-import {useLocation,useNavigate} from "react-router-dom";
 
 export default function AccountTransfer() {
     const items = [{label: 'Transacciones'}, {label: 'Transferencia'}];
@@ -15,7 +12,6 @@ export default function AccountTransfer() {
 
     const [product, setProduct] = useState(null);
     const [value, setValue] = useState(null);
-    const [Saldo, setSaldo] = useState(null);
 
     useEffect(() => {
         AccountProductService.getProductSaving().then(
@@ -23,16 +19,10 @@ export default function AccountTransfer() {
         )
     }, []);
 
-
-
-
-
-
     const gridItem = (product) => {
         return (
-
             <div className="col-12 md:col-5 lg:col-6 xl:col-3">
-                <div className="p-4 border-1 surface-border surface-card border-round">
+                <div className="p-4 border-1 surface-border surface-card shadow-2 border-round">
                     <div className="flex flex-wrap align-items-center justify-content-between gap-2">
                         <div className="flex align-items-center gap-2">
                             <span className="font-semibold">{product.id}</span>
@@ -52,7 +42,6 @@ export default function AccountTransfer() {
     };
 
 
-
     const itemTemplate = (product, layout) => {
         if (!product) {
             return;
@@ -66,14 +55,17 @@ export default function AccountTransfer() {
             <div className="card">
                 <div className="card flex justify-content-center p-4">
                     <span className="p-float-label">
-                        <InputNumber id="number-input" value={value} onValueChange={(e) => setValue(e.value)}  mode="currency" currency="USD" locale="en-US" />
+                        <InputNumber id="number-input" value={value} onValueChange={(e) => setValue(e.value)}
+                                     mode="currency" currency="USD" locale="en-US"/>
                         <label htmlFor="number-input">Ingrese el monto</label>
                     </span>
                 </div>
             </div>
-            <div className="contenedor">
+
+                <div className="contenedor">
                     <DataView value={product} itemTemplate={itemTemplate} layout="grid"/>
-            </div>
+                </div>
+
             <Divider align="center">
                 <span className="p-tag">Ingrese beneficiario</span>
             </Divider>

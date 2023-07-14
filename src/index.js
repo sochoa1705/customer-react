@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import 'primereact/resources/themes/banuio-red/theme.css';
+import 'primereact/resources/themes/banoio-red/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
@@ -11,9 +11,9 @@ import {ContextProvider} from "./hooks/useStateContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <ContextProvider>
+        <App/>
+    </ContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

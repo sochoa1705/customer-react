@@ -2,16 +2,37 @@ import React, {useEffect, useState} from "react";
 import {Divider} from 'primereact/divider';
 import {Button} from 'primereact/button';
 import {Image} from 'primereact/image';
-import {Formik, Field, Form} from 'formik';
+import  {Field, Form, Formik} from 'formik';
 import {createAPIEndpoint, ENDPOINTS} from "../../../api";
 import axios from "axios";
 import banc from "./../../../assets/banc.jpg";
+import * as Yup from "yup";
+import useStateContext from "../../../hooks/useStateContext";
 
-export default function LoginDemo() {
+
+export default function LoginDemo(o) {
+    const {  setContext, resetContext } = useStateContext();
+    const [loading, setLoading] = useState(false);
     const [value, setValue] = useState('');
     axios.defaults.headers['X-API-KEY'] = 'ccb12090';
-    useEffect(() => {
 
+    const schema = Yup.object().shape({
+        user: Yup.string()
+            .required("Se requiere un usuario"),
+        password: Yup.string()
+            .required("Se requiere una contraseña")
+    });
+
+    const load = () => {
+        setLoading(true);
+
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+    };
+
+    useEffect(() => {
+        resetContext()
     }, []);
 
     return (<div className="card flex justify-content-center contex">
@@ -35,38 +56,43 @@ export default function LoginDemo() {
                     <img src={banc} alt="hyper" height={50} className="mb-3"/>
                     <div className="text-900 text-3xl font-medium mb-3">Bienvenido</div>
                     <span className="text-600 font-medium line-height-3">No tienes una cuenta?</span>
-                    <a href={"register"} className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Solicitala!</a>
+                    <a href={"register"}
+                       className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Solicitala!</a>
                 </div>
-
                 <div>
                     <Formik
+                        validationSchema={schema}
                         initialValues={{
                             user: '', password: '',
                         }}
                         onSubmit={data => {
-                            console.log(data);
+
 
                             createAPIEndpoint(ENDPOINTS.accounts).fetch()
                                 .then(function (res) {
                                     for (let item of res.data) {
-                                        console.log(item)
                                         if (item.Username === data.user && item.Password === data.password) {
+                                            setContext({
+                                                user: data.user,
+                                                password: data.password,
+                                            })
+                                            setLoading(false);
                                             window.location.href = '/accounts';
                                         } else {
 
                                         }
-
                                     }
-
-
                                 })
                                 .catch(function (res) {
-                                    console.log(res)
+
+
                                 });
                         }}
-
                     >
-
+                        {({
+                              errors,
+                              touched,
+                          }) => (
                         <Form>
                             <label htmlFor="user" className="block text-900 font-medium mb-2">Usuario</label>
                             <Field id="user" name="user" type="text" placeholder="Ingresa tu Usuario"
@@ -85,8 +111,13 @@ export default function LoginDemo() {
                                     tu contraseña?</a>
                             </div>
 
-                            <Button label="Iniciar Sesión" icon="pi pi-user" className="w-full"/>
+                            <Button label="Iniciar Sesión" icon="pi pi-user" loading={loading} className="w-full" />
+                            {/* If validation is not passed show errors */}
+                            <p className="error">
+                                <small className="p-error">{errors.password}</small>
+                            </p>
                         </Form>
+                            )}
                     </Formik>
                 </div>
             </div>

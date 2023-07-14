@@ -33,11 +33,11 @@ export const FormikFormDebtor = (monto) => {
             }
 
             if (!data.id) {
-                errors.id = 'Cédula es requerido.';
+                errors.id = 'Cédula es requerida.';
             }
 
             if (!data.account) {
-                errors.account = 'Password is required.';
+                errors.account = 'Cuenta es requerida.';
             }
             return errors;
         },
